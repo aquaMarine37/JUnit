@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -64,14 +65,9 @@ class CarTest {
         assertArrayEquals(new String[]{"Olya Ivanova", "Ivan Ivanov"}, car.getOwners().toArray());
     }
     @Test
-    public void testMethodPrice(){
-        try{
+    public void testMethodPrice() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
             Method method = Car.class.getDeclaredMethod("methodPrice",String.class);
             method.setAccessible(true);
             assertEquals(method.invoke(car, "price").toString(), "price");
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }

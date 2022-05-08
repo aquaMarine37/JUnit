@@ -46,6 +46,7 @@ public class Car {
     }
 
     private String methodPrice(String price){
+
         return "price";
     }
 }
